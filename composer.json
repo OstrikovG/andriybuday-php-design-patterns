@@ -2,6 +2,7 @@
   "name": "glebostrikov/andriybuday-php-design-patterns",
   "type": "project",
   "require": {
+    "ext-gd": "*"
   },
   "license": "MIT",
   "authors": [
