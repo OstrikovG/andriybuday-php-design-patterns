@@ -2,7 +2,8 @@
   "name": "glebostrikov/andriybuday-php-design-patterns",
   "type": "project",
   "require": {
-    "ext-gd": "*"
+    "ext-gd": "*",
+    "ext-readline": "*"
   },
   "license": "MIT",
   "authors": [
