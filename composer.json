@@ -1,5 +1,5 @@
 {
-  "name": "glebostrikov/andriybuday-php-design-patterns",
+  "name": "ostrikov-g/andriybuday-php-design-patterns",
   "type": "project",
   "require": {
     "ext-gd": "*",
@@ -8,7 +8,7 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "OstrikovG",
+      "name": "Hlib Ostrikov",
       "email": "ostgleal@gmail.com"
     }
   ]
