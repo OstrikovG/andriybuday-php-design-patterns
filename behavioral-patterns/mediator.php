@@ -147,10 +147,11 @@ class Brain
 }
 
 $bodyPartClassName = \readline("Enter body part (‘Ear’, ‘Eye’, ‘Hand’ or empty to exit): ");
+$bodyPartClassNameMapper = ['Ear' => 'ear', 'Eye' => 'eye', 'Hand' => 'hand'];
 if ($bodyPartClassName === false) die;
 $brain = new Brain();
 /**
  * @var BodyPart $bodyPart
  */
-$bodyPart = new $bodyPartClassName($brain);
+$bodyPart = $brain->{$bodyPartClassNameMapper[$bodyPartClassName]};
 $bodyPart->changed();
