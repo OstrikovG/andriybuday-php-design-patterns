@@ -25,7 +25,7 @@ abstract class OrderState
         $this->order = $order;
     }
 
-    public function addProduct(Product $product): void
+    public function addProduct(): void
     {
         $this->operationIsNotAllowed("AddProduct");
     }
@@ -84,7 +84,8 @@ class Order
 
     public function addProduct(Product $product)
     {
-        $this->state->addProduct($product);
+        $this->state->addProduct();
+        $this->products[] = $product;
     }
 
     public function register()
@@ -112,9 +113,8 @@ class Order
         $this->state->cancel();
     }
 
-    public function doAddProduct(Product $product)
+    public function doAddProduct()
     {
-        $this->products[] = $product;
         printf("Adding product...\n");
     }
 
@@ -147,9 +147,9 @@ class Order
 
 class NewOrder extends OrderState
 {
-    public function addProduct(Product $product): void
+    public function addProduct(): void
     {
-        $this->order->doAddProduct($product);
+        $this->order->doAddProduct();
     }
 
     public function register(): void
@@ -167,15 +167,15 @@ class NewOrder extends OrderState
 
 class Registered extends OrderState
 {
-    public function addProduct(Product $product): void
+    public function addProduct(): void
     {
-        $this->order->doAddProduct($product);
+        $this->order->doAddProduct();
         $this->order->setOrderState(new NewOrder($this->order));
     }
 
     public function grant(): void
     {
-        $this->order->doRegister();
+        $this->order->doGrant();
         $this->order->setOrderState(new Granted($this->order));
     }
 
@@ -188,9 +188,9 @@ class Registered extends OrderState
 
 class Granted extends OrderState
 {
-    public function addProduct(Product $product): void
+    public function addProduct(): void
     {
-        $this->order->doAddProduct($product);
+        $this->order->doAddProduct();
     }
 
     public function ship(): void
